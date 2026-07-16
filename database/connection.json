@@ -1,0 +1,10 @@
+{
+    "production": {
+        "dialect": "sqlite",
+        "storage": "{APP_PATH}/database/database.sqlite",
+        "define": {
+            "underscored": true
+        },
+        "logging": false
+    }
+}
