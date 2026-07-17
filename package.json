@@ -1,6 +1,6 @@
 {
-    "name": "CMDeck",
-    "description": "CMDeck",
+    "name": "Prelhive",
+    "description": "Prelhive",
     "author": "radiantabyss.com",
     "license": "Private",
     "version": "1.0.0",
@@ -67,6 +67,10 @@
                 "filter": [
                     "**/*"
                 ]
+            },
+            {
+                "from": "../nexu",
+                "to": "nexu"
             }
         ]
     }

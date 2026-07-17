@@ -7,7 +7,7 @@ export default async () => {
     //init connection
     let connection = JSON.parse(await fs.readFile(`${APP_PATH}/database/connection.json`, 'utf-8'));
     connection.production.storage = connection.production.storage.replace('{APP_PATH}', APP_PATH);
-    
+
     let sequelize = new Sequelize(connection.production);
 
     //run migrations

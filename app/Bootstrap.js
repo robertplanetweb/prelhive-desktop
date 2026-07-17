@@ -13,8 +13,8 @@ export default async () => {
     //load env
     let __dirname = path.dirname(fileURLToPath(import.meta.url));
     let ENV = {
-        ...dotenv.parse(await fs.readFile(`${__dirname}/../../.env`, 'utf-8')),
-        ...dotenv.parse(await fs.readFile(`${__dirname}/../../.ra`, 'utf-8')),
+        ...dotenv.parse(await fs.readFile(`${__dirname}/../.env`, 'utf-8')),
+        ...dotenv.parse(await fs.readFile(`${__dirname}/../.ra`, 'utf-8')),
     };
     for ( let key in ENV ) {
         if ( ENV[key] === 'true' ) {

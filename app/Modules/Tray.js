@@ -36,7 +36,7 @@ let self = {
             MainWindow.show();
         });
 
-        tray.setToolTip('CMDeck');
+        tray.setToolTip('Prelhive');
         tray.setContextMenu(contextMenu);
 
         TRAY = tray;
