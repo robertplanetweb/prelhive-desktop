@@ -26,33 +26,27 @@ if ( !gotTheLock ) {
 let nexuProcess = null;
 
 app.whenReady().then(() => {
-    const isPackaged = app.isPackaged;
-    const resourcesPath = process.resourcesPath;
-    
     // Determine the path to nexu based on whether app is packaged or in dev mode
-    const nexuDir = isPackaged 
-        ? path.join(resourcesPath, '..', 'nexu') // 'nexu' is copied to the root directory next to the executable
-        : path.join(process.cwd(), '..', 'nexu');
-
-    const javaPath = path.join(nexuDir, 'java', 'bin', 'javaw.exe');
-    const nexuJarPath = path.join(nexuDir, 'nexu.jar');
-
-    console.log('Starting NexU from:', nexuDir);
+    // if 'nexu' is copied to the root directory next to the executable
+    const nexu_dir = app.isPackaged ? path.join(process.resourcesPath, '..', 'nexu') : path.join(process.cwd(), '..', 'nexu');
+    const java_path = path.join(nexu_dir, 'java', 'bin', 'javaw.exe');
+    const nexu_jar_path = path.join(nexu_dir, 'nexu.jar');
 
     try {
-        nexuProcess = spawn(javaPath, [
+        nexuProcess = spawn(java_path, [
             '-Djavafx.preloader=lu.nowina.nexu.NexUPreLoader',
             '-Dglass.accessible.force=false',
             '-jar',
-            nexuJarPath
+            nexu_jar_path
         ], {
-            cwd: nexuDir,
+            cwd: nexu_dir,
             detached: true,
             stdio: 'ignore'
         });
 
         nexuProcess.unref(); // allow the process to run independently in the background
-    } catch (e) {
+    }
+    catch (e) {
         console.error('Failed to start NexU', e);
     }
 });
